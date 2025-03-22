@@ -8,6 +8,7 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery.css">
 </head>
 
 <body>
@@ -17,13 +18,33 @@
       name: '',
       repo: '',
       loadSidebar: true,
+      subMaxLevel: 2,
+      plugins: [
+        function (hook, vm) {
+          hook.doneEach(function () {
+            const galleryElements = document.querySelectorAll(".gallery");
+            galleryElements.forEach(el => {
+              lightGallery(el, {
+                selector: "a",
+                thumbnail: true,
+                zoom: true,
+                download: false
+              });
+            });
+          });
+        }
+      ]
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <!-- Electronic photo album-->
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-photoswipe/dist/docsify-photoswipe.min.js"></script>
+  <!--  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-photoswipe/dist/docsify-photoswipe.min.js"></script>-->
+  <!--电子相册-->
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery/lightgallery.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery/plugins/thumbnail/lg-thumbnail.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery/plugins/zoom/lg-zoom.umd.
 
 </body>
 
